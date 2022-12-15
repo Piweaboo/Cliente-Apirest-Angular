@@ -1,0 +1,10 @@
+<form #clienteForm="ngForm" >
+  <div class="mb-3">
+    <label class="form-label">Nombre</label>
+    <input type="text" class="form-control" name="nombre" [(ngModel)]="productoNew.nombre">
+  </div>
+
+  <button *ngIf="!productoNew.id" class="btn btn-primary" (click)="guardarProducto()">Guardar</button>
+
+  <button *ngIf="productoNew.id" class="btn btn-primary" (click)="editarProducto()">Editar</button>
+</form>

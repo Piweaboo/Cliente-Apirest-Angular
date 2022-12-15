@@ -1,0 +1,35 @@
+<form #clienteForm="ngForm" >
+  <div class="mb-3">
+    <label class="form-label">Nombre</label>
+    <input type="text" class="form-control" name="nombre" [(ngModel)]="clienteNew.nombre">
+  </div>
+  <div class="mb-3">
+    <label class="form-label">Apellido</label>
+    <input type="text" class="form-control" name="apellido" [(ngModel)]="clienteNew.apellido">
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label">Email</label>
+    <input type="email" class="form-control" name="email" [(ngModel)]="clienteNew.email">
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label">Telefono</label>
+    <input type="number" class="form-control" name="telefono" [(ngModel)]="clienteNew.telefono">
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label">Region</label>
+    <div>
+      <select [compareWith]="compararRegion" class="form-select" name="region" style="width: 500;" [(ngModel)]="clienteNew.region">
+        <option [ngValue]="undefined">---Eliga una region---</option>
+        <option *ngFor="let item of regiones"  [ngValue]="item" >{{item.name}}</option>
+      </select>
+    </div>
+
+  </div>
+
+  <button *ngIf="!clienteNew.id" class="btn btn-primary" (click)="guardarCliente()">Guardar</button>
+
+  <button *ngIf="clienteNew.id" class="btn btn-primary" (click)="editarCliente()">Editar</button>
+</form>
